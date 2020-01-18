@@ -33,8 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
   goodsWrapper.appendChild(createCardGoods(2, 'Фламинго', 3000, 'img/temp/Flamingo.jpg'));
   goodsWrapper.appendChild(createCardGoods(3, 'Носки', 333, 'img/temp/Socks.jpg'));
 
-  const openCart = () => {
+  const openCart = (event) => {
+    event.preventDefault();
     cart.style.display = 'flex';
+    document.addEventListener('keyup', closeCart);
   };
 
   // const closeCartX = () => {
@@ -43,9 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const closeCart = (event) => {
     const target = event.target;
-    if (target === cart || target === cartClose) {
-      cart.style.display = 'none'
+    if (target === cart || target === cartClose || event.keyCode === 27) {
+      cart.style.display = 'none';
+      document.removeEventListener('keyup', closeCart);
     }
+    //console.log(event.keyCode);
   };
 
   cartBtn.addEventListener('click', openCart);
