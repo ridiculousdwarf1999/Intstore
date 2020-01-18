@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartBtn = document.getElementById('cart');
   const wishlistBtn = document.getElementById('wishlist');
   const goodsWrapper = document.querySelector('.goods-wrapper');
+  const cart = document.querySelector('.cart');
+  const cartClose = document.querySelector('.cart-close');
 
   const createCardGoods = (id, title, price, img) => {
 
@@ -30,5 +32,24 @@ document.addEventListener('DOMContentLoaded', () => {
   goodsWrapper.appendChild(createCardGoods(1, 'Дартс', 2000, 'img/temp/Archer.jpg'));
   goodsWrapper.appendChild(createCardGoods(2, 'Фламинго', 3000, 'img/temp/Flamingo.jpg'));
   goodsWrapper.appendChild(createCardGoods(3, 'Носки', 333, 'img/temp/Socks.jpg'));
+
+  const openCart = () => {
+    cart.style.display = 'flex';
+  };
+
+  // const closeCartX = () => {
+  //   cart.style.display = 'none';
+  // };
+
+  const closeCart = (event) => {
+    const target = event.target;
+    if (target === cart || target === cartClose) {
+      cart.style.display = 'none'
+    }
+  };
+
+  cartBtn.addEventListener('click', openCart);
+  //cartClose.addEventListener('click', closeCartX);
+  cart.addEventListener('click', closeCart);
 
 });
