@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
     return card
   };
 
-  goodsWrapper.appendChild(createCardGoods(1, 'Дартс', 2000, 'img/temp/Archer.jpg'));
-  goodsWrapper.appendChild(createCardGoods(2, 'Фламинго', 3000, 'img/temp/Flamingo.jpg'));
-  goodsWrapper.appendChild(createCardGoods(3, 'Носки', 333, 'img/temp/Socks.jpg'));
+  // goodsWrapper.appendChild(createCardGoods(1, 'Дартс', 2000, 'img/temp/Archer.jpg'));
+  // goodsWrapper.appendChild(createCardGoods(2, 'Фламинго', 3000, 'img/temp/Flamingo.jpg'));
+  // goodsWrapper.appendChild(createCardGoods(3, 'Носки', 333, 'img/temp/Socks.jpg'));
 
   const openCart = (event) => {
     event.preventDefault();
@@ -53,8 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const renderCard = (items) => {
-    items.forEach((item, index, array) => {
-      console.log(item);
+    items.forEach((item) => {
+      const {id, title, price, imgMin} = item;
+      goodsWrapper.appendChild(createCardGoods(id, title, price, imgMin));
     });
   };
 
