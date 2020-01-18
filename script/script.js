@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const goodsWrapper = document.querySelector('.goods-wrapper');
   const cart = document.querySelector('.cart');
   const cartClose = document.querySelector('.cart-close');
+  const category = document.querySelector('.category');
 
   const createCardGoods = (id, title, price, img) => {
 
@@ -68,11 +69,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const randomSort = (item) => {
     return item.sort(() => Math.random() - 0.5);
-  }
+  };
+
+  const chooseCategory = event => {
+    event.preventDefault();
+    const target = event.target;
+    if (target.classList.contains('category-item')) {
+      goodsWrapper.innerHTML = '';
+      const category = target.dataset.category;
+      getGoods(renderCard, goods => randomSort(goods.filter(item => item.category.includes(category))))
+    }
+  };
 
   cartBtn.addEventListener('click', openCart);
   //cartClose.addEventListener('click', closeCartX);
   cart.addEventListener('click', closeCart);
+  category.addEventListener('click', chooseCategory)
   
   getGoods(renderCard, randomSort);
 
