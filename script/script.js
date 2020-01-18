@@ -52,6 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
     //console.log(event.keyCode);
   };
 
+  const getGoods = (handler) => {
+    fetch('db/db.json')
+      .then(response => response.json())
+      .then(hadler);
+  };
+
   cartBtn.addEventListener('click', openCart);
   //cartClose.addEventListener('click', closeCartX);
   cart.addEventListener('click', closeCart);
