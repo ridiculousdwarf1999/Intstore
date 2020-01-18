@@ -59,16 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  const getGoods = (handler) => {
+  const getGoods = (handler, filter) => {
     fetch('db/db.json')
       .then(response => response.json())
+      .then(filter)
       .then(handler);
   };
+
+  const randomSort = (item) => {
+    return item.sort(() => Math.random() - 0.5);
+  }
 
   cartBtn.addEventListener('click', openCart);
   //cartClose.addEventListener('click', closeCartX);
   cart.addEventListener('click', closeCart);
   
-  getGoods(renderCard);
+  getGoods(renderCard, randomSort);
 
 });
