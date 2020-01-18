@@ -52,14 +52,22 @@ document.addEventListener('DOMContentLoaded', () => {
     //console.log(event.keyCode);
   };
 
+  const renderCard = (items) => {
+    items.forEach((item, index, array) => {
+      console.log(item);
+    });
+  };
+
   const getGoods = (handler) => {
     fetch('db/db.json')
       .then(response => response.json())
-      .then(hadler);
+      .then(handler);
   };
 
   cartBtn.addEventListener('click', openCart);
   //cartClose.addEventListener('click', closeCartX);
   cart.addEventListener('click', closeCart);
+  
+  getGoods(renderCard);
 
 });
