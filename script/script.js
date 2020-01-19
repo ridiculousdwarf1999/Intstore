@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const renderCard = (items) => {
+    goodsWrapper.textContent = '';
     items.forEach((item) => {
       const {id, title, price, imgMin} = item;
       goodsWrapper.appendChild(createCardGoods(id, title, price, imgMin));
@@ -75,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     const target = event.target;
     if (target.classList.contains('category-item')) {
-      goodsWrapper.innerHTML = '';
       const category = target.dataset.category;
       getGoods(renderCard, goods => randomSort(goods.filter(item => item.category.includes(category))))
     }
