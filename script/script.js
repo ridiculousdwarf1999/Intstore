@@ -87,10 +87,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  const searchGoods = event => {
+    event.preventDefault();
+    const input = event.target.elements.searchGoods;
+    const inputValue = input.value.trim();
+    if (inputValue !== '') {
+      const searchString = new RegExp(inputValue, 'i');
+      getGoods(renderCard, goods => goods.filter(item => searchString.test(item.title)));
+    }
+  };
+
   cartBtn.addEventListener('click', openCart);
   //cartClose.addEventListener('click', closeCartX);
   cart.addEventListener('click', closeCart);
-  category.addEventListener('click', chooseCategory)
+  category.addEventListener('click', chooseCategory);
+  search.addEventListener('submit', searchGoods);
   
   getGoods(renderCard, randomSort);
 
